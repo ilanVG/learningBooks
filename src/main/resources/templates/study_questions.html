@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Book Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/questionsStyles.css}">
+
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var theQuestions = /*[[${selected.questions}]]*/ 'default';
+        console.log(theQuestions);
+        console.log(typeof theQuestions);
+
+        var randomIndex;
+
+        function getRandomQuestion(obj) {
+            console.log("get random question")
+
+            const keys = Object.keys(obj);
+            console.log(keys.length);
+            if(keys.length != 0)
+            {
+                randomIndex = Math.floor(Math.random() * keys.length);
+                return keys[randomIndex];
+            }
+            else
+            {
+                return "This book has no questions."
+            }
+        }
+
+        function printQ()
+        {
+            const element = document.getElementById("randomQuestions");
+            element.style.backgroundColor = "#aed4c2";
+            element.style.border = "3px";
+            element.style.borderStyle = "inset";
+            const keys = Object.keys(element);
+            console.log("PrintQ Length")
+            console.log(keys.length);
+
+            document.getElementById("randomQuestions").innerHTML = getRandomQuestion(theQuestions);
+        }
+
+        function printA()
+        {
+            const element = document.getElementById("randomQuestions");
+            element.style.backgroundColor = "#1affa3";
+            element.style.border = "3px";
+            element.style.borderRadius = "6px"
+            element.style.borderStyle = "double";
+            var questionsArray = Object.values(theQuestions);
+            document.getElementById("randomQuestions").innerHTML = questionsArray[randomIndex];
+        }
+        /*]]>*/
+    </script>
+
+</head>
+<body id="main">
+<div id="text" align="center">
+    <h1 >You chose <span id="selectedTitle" th:text="${selected.title}"></span></h1>
+
+    <h2>Add a Question and Answer</h2>
+    <form action="/addQuestions" method="post">
+        <input type="hidden" id="title" th:name="title" th:value="${modelBookKey.title}" /><br/>
+        <label>New Question:</label>
+        <input type="text" id="question" th:name="question" value="" /><br/>
+
+        <label>Its Answer:</label>
+        <input type="text" id="author" th:name="answer" value="" /><br/>
+
+        <button class="btn" type="submit">Add Question</button>
+    </form>
+    <hr>
+    <h2> Review Questions </h2>
+    <button class="btn" onclick="printQ()">Get Question</button>
+    <br>
+    <button class="unbutton" id="randomQuestions" onclick="printA()"> </button>
+</div>
+</body>
+</html>

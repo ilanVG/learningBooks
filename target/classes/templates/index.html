@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Retain</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Rubik:wght@500&family=Tapestry&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/styles/indexMain.css}">
+
+</head>
+<body id="main">
+<div id="text" align="center">
+  <h1>Read and Retain</h1>
+  <a id="addBook" href="/register">Add a Book</a>
+  <br>
+  <br>
+  <hr>
+
+  <img th:src="@{/styles/book_image.jpg}" >
+  <br>
+  <label>Choose Book to Review:</label>
+  <form th:action="@{/toStudy}" method="post" th:object="${modelBookKey}">
+    <select th:field="*{title}">
+      <option th:value="${null}">select book</option>
+      <option th:each="b : ${books}"  th:value="${b.title}" th:text="${b.title}"></option>
+    </select>
+    <br>
+    <br>
+    <button class="btn"  type="submit">Review</button>
+  </form>
+  <br>
+  <br>
+  <form th:action="@{/removeBooks}" method="post">
+    <button class="btn" id="remove" type="submit">Remove All Books</button>
+  </form>
+
+
+</div>
+</body>
+</html>

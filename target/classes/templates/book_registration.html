@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Book Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles/registrationStyles.css}">
+
+</head>
+<body id="main">
+<div id="text" align="center">
+    <h1>Book Registration</h1>
+    <form th:action="@{/register}" method="post" th:object="${modelBookKey}">
+        <label>ISBN:</label>
+        <input type="text" th:field="*{isbn}" /><br/>
+
+        <label>Title:</label>
+        <input type="text" th:field="*{title}" /><br/>
+
+        <label>Author:</label>
+        <input type="text" th:field="*{author}" /><br/>
+
+        <button id="btn" type="submit">Register</button>
+
+    </form>
+</div>
+</body>
+</html>

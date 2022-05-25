@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Registration Success</title>
+    <style type="text/css">
+    span {
+        display: inline-block;
+        width: 200px;
+        text-align: left;
+    }
+</style>
+</head>
+<body>
+<div align="center">
+    <h2>Registration Succeeded!</h2>
+    <span>Book Title:</span><span th:text="${modelBookKey.title}"></span><br/>
+    <span>Author :</span><span th:text="${modelBookKey.author}"></span><br/>
+    <span>ISBN:</span><span th:text="${modelBookKey.isbn}"></span><br/>
+    <br>
+    <a href="/">Go back to home page</a>
+</div>
+
+
+</body>
+</html>
