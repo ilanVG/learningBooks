@@ -28,14 +28,18 @@
     <br>
     <br>
     <button class="btn"  type="submit">Review</button>
+    <br>
+    <br>
+    <div id="removeForm">
+
+        <button class="btn" id="remove" type="submit" th:formaction="@{/removeBooks}">Remove All Books</button>
+
+    </div>
   </form>
   <br>
   <br>
-  <form th:action="@{/removeBooks}" method="post">
-    <button class="btn" id="remove" type="submit">Remove All Books</button>
-  </form>
 
-
+  <br>
 </div>
 </body>
 </html>
