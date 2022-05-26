@@ -5,10 +5,7 @@ import mdbsSpring.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,18 +30,20 @@ public class BookController
         return "index";
     }
 
-    @PostMapping("/removeBooks")
-    public String deleteBooks(Model model)
+    @RequestMapping(value = "/removeBooks", method = RequestMethod.POST)
+    public String deleteBooks(@ModelAttribute("modelBookKey") Book theBook, Model model)
     {
         System.out.println("Deleting");
-        bookRepo.deleteAll();
-        Book book = new Book();
-        model.addAttribute("modelBookKey", book);
+        String theTitle = theBook.getTitle();
+        System.out.println(theTitle);
+        bookRepo.deleteBooksByTitle(theTitle);
+        bookList = bookRepo.findAll();
+        System.out.println(bookList);
+        model.addAttribute("books",bookList);
         return "index";
     }
 
     //after clicking 'Add Book' sends to book registration page with empty book object
-    //Book object located in model at modelBookKey
     @GetMapping("/register")
     public String showPage(Model model)
     {
@@ -65,7 +64,8 @@ public class BookController
     }
 
     //directs from drop down to form for adding questions
-    @PostMapping("/toStudy")
+    //@PostMapping("/toStudy")
+    @RequestMapping(value = "/toStudy", method = RequestMethod.POST)
     public String studyQuestions(@ModelAttribute("modelBookKey") Book theBook, Model model) {
         if(!theBook.getTitle().equals(""))
         {
