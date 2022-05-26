@@ -18,7 +18,7 @@ h1
 {
     font-family: 'Koulen', cursive;
     font-size: 3em;
-    line-height: .7;
+    line-height: .85;
 }
 
 h2{
@@ -112,3 +112,17 @@ button
     background:none;
     border:none;
 }
+
+.toHome{
+    background-image: linear-gradient(
+            to right,
+            rgb(87, 82, 82),
+            white 35%,
+            white 65%,
+            rgb(99, 95, 95)
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 center;
+}
+

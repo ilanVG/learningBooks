@@ -21,21 +21,18 @@
   <br>
   <label>Choose Book to Review:</label>
   <form th:action="@{/toStudy}" method="post" th:object="${modelBookKey}">
-    <select th:field="*{title}">
+    <select class="custom-select" th:field="*{title}">
       <option th:value="${null}">select book</option>
       <option th:each="b : ${books}"  th:value="${b.title}" th:text="${b.title}"></option>
     </select>
     <br>
     <br>
-    <button class="btn"  type="submit">Review</button>
+    <button class="btn"  type="submit">Review Book</button>
+    <br>
+    <br>
+    <button class="btn" id="remove" type="submit" th:formaction="@{/removeBooks}">Remove Book</button>
   </form>
   <br>
-  <br>
-  <form th:action="@{/removeBooks}" method="post">
-    <button class="btn" id="remove" type="submit">Remove All Books</button>
-  </form>
-
-
 </div>
 </body>
 </html>
