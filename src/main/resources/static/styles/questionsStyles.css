@@ -126,3 +126,15 @@ button
     background-position: 0 center;
 }
 
+.toHome{
+    background-image: linear-gradient(
+            to right,
+            rgb(87, 82, 82),
+            white 35%,
+            white 65%,
+            rgb(99, 95, 95)
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 center;
+}
