@@ -65,7 +65,8 @@ public class BookController
 
     @RequestMapping(value = "/toStudy", method = RequestMethod.GET)
     public String studyQuestionsReload(@ModelAttribute("modelBookKey") Book theBook, Model model) {
-        System.out.println("GEt: ");
+        System.out.println("Gt: ");
+        System.out.println(model.getAttribute("modelBookKey"));
         System.out.println(theBook);
         if(theBook.getTitle() == null)
         {
@@ -80,6 +81,7 @@ public class BookController
             System.out.println(selectedBook);
             model.addAttribute("selected", selectedBook);
             System.out.println("Not null");
+            System.out.println(model.getAttribute("selected"));
             return "study_questions";
         }
         return "index.html";
