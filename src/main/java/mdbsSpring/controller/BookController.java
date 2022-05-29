@@ -63,8 +63,29 @@ public class BookController
         return "register_success";
     }
 
-    //directs from drop down to form for adding questions
-    //@PostMapping("/toStudy")
+    @RequestMapping(value = "/toStudy", method = RequestMethod.GET)
+    public String studyQuestionsReload(@ModelAttribute("modelBookKey") Book theBook, Model model) {
+        System.out.println("GEt: ");
+        System.out.println(theBook);
+        if(theBook.getTitle() == null)
+        {
+            bookList = bookRepo.findAll();
+            model.addAttribute("books",bookList);
+            return "index";
+        }
+        else if(!theBook.getTitle().equals(""))
+        {
+            System.out.println("Given book: " + theBook);
+            Book selectedBook = bookRepo.findItemByName(theBook.getTitle());
+            System.out.println(selectedBook);
+            model.addAttribute("selected", selectedBook);
+            System.out.println("Not null");
+            return "study_questions";
+        }
+        return "index.html";
+    }
+
+    //directs from drop down to form for adding or getting questions
     @RequestMapping(value = "/toStudy", method = RequestMethod.POST)
     public String studyQuestions(@ModelAttribute("modelBookKey") Book theBook, Model model) {
         if(!theBook.getTitle().equals(""))
