@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Controller
+@SessionAttributes("modelBookKey")
 public class BookController
 {
     @Autowired
@@ -30,6 +31,16 @@ public class BookController
         return "index";
     }
 
+    @RequestMapping(value = "/removeBooks", method = RequestMethod.GET)
+    public String deleteBooksReload(Model model)
+    {
+        Book book = new Book();
+        model.addAttribute("modelBookKey", book);
+        System.out.println("Started from controller");
+        bookList = bookRepo.findAll();
+        model.addAttribute("books",bookList);
+        return "index";
+    }
     @RequestMapping(value = "/removeBooks", method = RequestMethod.POST)
     public String deleteBooks(@ModelAttribute("modelBookKey") Book theBook, Model model)
     {

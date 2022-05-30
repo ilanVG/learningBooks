@@ -13,8 +13,6 @@
 <div id="text" align="center">
     <h1>Book Registration</h1>
     <form th:action="@{/register}" method="post" th:object="${modelBookKey}">
-        <label>ISBN:</label>
-        <input type="text" th:field="*{isbn}" /><br/>
 
         <label>Title:</label>
         <input type="text" th:field="*{title}" /><br/>
