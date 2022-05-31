@@ -2,6 +2,6 @@ spring:
   data:
     mongodb:
       uri: ${MONGODB_URI}
-      database:{MONGODB_DB}
+      database: ${MONGODB_DB}
 
   
