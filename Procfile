@@ -1,2 +1,2 @@
-web: java -jar -cp target/learning-0.0.1-SNAPSHOT.jar Dserver.port=$PORT $JAVA_OPTS -Dspring.data.mongo.url=${MONGODB_URI} spring.data.mongodb.database=${MONGODB_DB}
+web: java -jar Dserver.port=$PORT $JAVA_OPTS -Dspring.data.mongo.url=${MONGODB_URI} spring.data.mongodb.database=${MONGODB_DB} -cp target/learning-0.0.1-SNAPSHOT.jar
 
