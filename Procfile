@@ -1,1 +1,1 @@
-web: java Dserver.port=$PORT $JAVA_OPTS -Dspring.data.mongo.url=${MONGODB_URI} -jar target/learning-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -Dspring.data.mongo.url=${MONGODB_URI} -jar -Dserver.port=$PORT target/*.jar
